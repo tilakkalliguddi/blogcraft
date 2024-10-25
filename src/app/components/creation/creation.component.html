@@ -1,0 +1,19 @@
+<mat-card appearance="outlined" class="m-[4%]">
+  <mat-card-header class="text-xl mb-4">{{ isEditMode ? 'Edit Blog' : 'Create a new blog' }}</mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="blogForm">
+      <mat-form-field>
+        <mat-label>Give a title to your blog</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Start typing your blog here...</mat-label>
+        <textarea matInput rows="15" formControlName="content"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <div class="flex justify-around mb-4">
+    <button mat-raised-button class="w-[20%]" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button class="w-[20%]" (click)="onSave()">{{ isEditMode ? 'Update' : 'Save' }}</button>
+  </div>
+</mat-card>
