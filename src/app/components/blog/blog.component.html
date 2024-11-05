@@ -1,0 +1,32 @@
+@if(blog()){
+<mat-card class="mt-8">
+  <div class="flex justify-between ">
+    <div class="inline-flex justify-around ml-16 mt-4 w-40">
+      <mat-icon type="button" class="" (click)="backToHome()">reply</mat-icon>
+      @if(this.isCreator()){
+      <mat-icon (click)="onDelete(blog()!.id)">delete</mat-icon>
+      <mat-icon (click)="onEdit(blog()!.id)">edit</mat-icon>}
+    </div>
+    <div class="mr-28 mt-4">
+      <mat-icon (click)="blogService.addLike(blog()!.id)" class="text-rose-600 align-middle	">favorite</mat-icon>
+      <span class="align-middle	">{{ blog()!.likes }}</span>
+      <mat-icon class="mx-8 align-middle " (click)="onComment(blog()!.id, commentInput)">chat</mat-icon>
+      <input #commentInput placeholder="Add a comment..." />
+    </div>
+  </div>
+  <mat-card-header class="my-6">
+    <p class="text-5xl px-16 text-center">{{ blog()!.title }}</p>
+  </mat-card-header>
+  <mat-card-content class="mx-32">
+    <p>{{ blog()!.content }}</p>
+  </mat-card-content>
+  <mat-card-content class="m-16">
+    <p class="ml-16 text-xl">Author - {{blog()?.createdBy}}</p>
+    <p class="text-xl">Comments</p>
+    @for(comment of blog()?.comments; track comment){<div class="comment my-2 ml-4 ">
+      🗨️ {{ comment.text }}
+    </div>
+    }
+  </mat-card-content>
+</mat-card>
+}

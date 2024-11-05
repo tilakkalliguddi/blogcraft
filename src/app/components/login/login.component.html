@@ -1,0 +1,30 @@
+<div class="md:flex ">
+    <div class="w-[65%]">
+        <img src="loginImg.jpg" alt="image" class="rounded-br-[6rem]">
+    </div>
+    <div class="w-72 m-auto p-4">
+        <p class="text-3xl">Login</p>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <mat-form-field appearance="fill" class="my-5 w-60">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="username" required />
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-auto">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" name="password"
+                    required />
+                <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility($event)"
+                    [attr.aria-label]="'Hide password'">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <span class="flex justify-between w-60">
+                <button mat-raised-button color="primary" type="button" (click)="backToHome()">Home</button>
+                <button mat-raised-button color="primary" type="submit">Login</button>
+            </span>
+            <p class="text-sm my-4 text-slate-600">
+                Don't have an account? Register.
+            </p>
+        </form>
+    </div>
+</div>

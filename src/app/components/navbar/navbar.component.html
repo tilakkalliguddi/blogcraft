@@ -1,0 +1,16 @@
+<mat-toolbar class="bg-blue-400 px-28 shadow-xl">
+    <span class="font-bold text-3xl">BlogCraft</span>
+    <span class="ml-auto">
+        @if(authService.isLoggedIn()){
+        <ng-container>
+            <button mat-raised-button class="mr-4" (click)="toggleRoute()">{{ buttonText() }}</button>
+            <button mat-raised-button (click)="logOut()">LogOut</button>
+        </ng-container>
+        } @else {
+        <ng-container>
+            <button mat-raised-button (click)="router.navigate(['/login'])" class="mr-4">Login</button>
+            <button mat-raised-button (click)="router.navigate(['/register'])">Register</button>
+        </ng-container>
+        }
+    </span>
+</mat-toolbar>

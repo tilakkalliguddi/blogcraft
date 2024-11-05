@@ -1,0 +1,8 @@
+.mat-mdc-form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-snack-bar-handset {
+    margin-top: 75px !important; 
+}

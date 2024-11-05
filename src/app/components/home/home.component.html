@@ -1,0 +1,24 @@
+@if(blogs().length === 0){<img src="nodata.jpg" alt="no data" class="m-auto max-w-[65%]">}
+@else{
+@for(blog of blogs(); track blog.id){
+<mat-card appearance="outlined" class="w-[78%] mx-auto my-4 relative">
+  <mat-card-header class="mb-3 font-semibold" (click)="viewBlog(blog.id)">{{blog.title}}</mat-card-header>
+  <mat-card-content>{{ blog.content | truncate }}
+  </mat-card-content>
+  <mat-card-actions class=" h-12 mt-4">
+    <button mat-button (click)="blogService.addLike(blog.id)">
+      <mat-icon class="text-rose-600">favorite</mat-icon>
+      <span class="align-super">{{ blog.likes }}</span>
+    </button>
+    <div class="flex ml-8">
+      <mat-icon class="mr-4" (click)="onComment(blog.id, commentInput)">chat</mat-icon>
+      <input #commentInput placeholder="Add a comment..." />
+    </div>
+    @for(comment of blog.comments; track comment.text){<div class="comment mb-2 ml-4">
+      🗨️ {{ comment.text }}
+    </div>
+    }
+  </mat-card-actions>
+</mat-card>
+}
+}
